@@ -1,0 +1,100 @@
+<html>
+    <head>
+        <title>Doctor's Login Page</title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+
+            }
+            body{
+                min-height: 100vh;
+
+            }
+            .container{
+                margin: auto;
+                width: 500px;
+                max-width: 90%;
+                
+            }
+        </style>
+         <script>
+            // Generate a random CAPTCHA code
+            function generateCaptcha() {
+                const captchaChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
+                let captcha = "";
+                for (let i = 0; i < 6; i++) {
+                    captcha += captchaChars.charAt(Math.floor(Math.random() * captchaChars.length));
+                }
+                document.getElementById("captcha").textContent = captcha;
+            }
+    
+            // Validate the entered CAPTCHA
+            function validateCaptcha() {
+                const userInput = document.getElementById("userInput").value;
+                const captcha = document.getElementById("captcha").textContent;
+    
+                if (userInput === captcha) {
+                    alert("CAPTCHA is correct!");
+                } else {
+                    alert("CAPTCHA is incorrect. Please try again.");
+                    generateCaptcha(); // Regenerate CAPTCHA
+                }
+            }
+        </script>
+
+    </head>
+    <Body>
+        <div class="container">
+            <form action="">
+                <h1>Appointment resrvation</h1>
+                <div class="form-group">
+                    <label for="">Name</label>
+                    <input type="text" class="form-control" required>
+        </div>
+        <div class="form-group">
+                 <label for="">Age</label>
+                 <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="">Cnic/B-form no.</label>
+                <input type="text" class="form-control" required>
+           </div>
+           <div class="form-group">
+            <label for="">Medical Issue</label>
+            <input type="text" class="form-control" required>
+            </div>
+       <div class="form-group">
+        <label for="">Date of Appointment</label>
+        <input type="text" class="form-control" required>
+            </div>
+            <div class="form-group">
+                <label for="">Email-ID</label>
+                <input type="text" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                   <label for="">Password</label>
+                  <input type="password" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label for="">Confirm Password</label>
+                    <input type="password" class="form-control" required>
+                        </div>
+                    
+            <input type="submit" class="btn" value="Apply for reservation">
+            <br><br>
+            <h1>CAPTCHA</h1>
+            <p>Enter the CAPTCHA below:</p>
+        
+            <div id="captcha" style="font-size: 20px;"></div>
+            <br>
+            <input type="text" id="userInput" placeholder="Enter CAPTCHA">
+            <br>
+            <button onclick="validateCaptcha()">Submit</button>
+        
+            <script>
+                generateCaptcha(); // Generate initial CAPTCHA
+            </script>
+    </Body>
+</html>
